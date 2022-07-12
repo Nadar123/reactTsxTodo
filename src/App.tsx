@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Todos from './components/Todos/Todos'
+import Todo from './models/todo';
+import Header from './components/Header/Header'
+import NewTodo from './components/NewTodo/NewTodo'
+import { useState, useEffect } from 'react';
+import {AppWrapper, AppContent} from './StyleApp'
+
+
 
 function App() {
+  const [todos, setTodos] = useState<Todo[]>(() =>  {
+    const localData = localStorage.getItem('todos');
+     return localData ? JSON.parse(localData) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos])
+
+  const addTodoHandler = (todoText: string) => {
+    const newTodo = new Todo(todoText)
+
+    setTodos((prevTodos) => {
+      return prevTodos.concat(newTodo);
+    })
+    
+  }
+  const removeTodo = (todoId: number) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== todoId) 
+    })
+    localStorage.removeItem('todos');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <AppContent>
+        <Header/>
+        <NewTodo onAddTodo={addTodoHandler} />
+        <Todos items={todos} onRemoveTodo={removeTodo}/>
+      </AppContent>
+    </AppWrapper>
   );
 }
 
