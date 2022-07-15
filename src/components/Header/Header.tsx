@@ -1,9 +1,11 @@
-import {Title} from './StyleHeader'
+import { Title, HeadTarget } from "./StyleHeader";
 
 const Header = () => {
   return (
-    <Title>Todo List</Title>
-  )
-}
+    <Title>
+      <HeadTarget>Todo List</HeadTarget>
+    </Title>
+  );
+};
 
 export default Header;

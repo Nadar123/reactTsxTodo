@@ -13,9 +13,10 @@ export const Input = styled.input`
   color: #fff;
   font-size: 18px;
   cursor: pointer;
+  transition: all 0.5s ease;
 
   &:hover {
-    background-color: #fff;
+    background-color: #00ffc7;
     color: #000;
   }
   &::placeholder {
@@ -27,7 +28,7 @@ export const Input = styled.input`
   }
 `;
 export const SubmitButton = styled.button`
-  margin: 1rem auto;
+  margin: 2rem auto 1rem auto;
   padding: 9px 2rem;
   border-radius: 10px;
   background: #fff;
@@ -37,11 +38,14 @@ export const SubmitButton = styled.button`
   border: 1px solid #000;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  transform: scale(1.1);
 
   &:hover {
     border: 1px solid #fff;
+    border-radius: 35px;
     transform: scale(1.3);
     color: greenyellow;
+    box-shadow: 0 0 10px 0 #00ffc7 inset, 0 0 10px 4px #00ffc7;
   }
 `;
 

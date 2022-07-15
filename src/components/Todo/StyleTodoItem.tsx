@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Item = styled.li`
   background: #303234;
+  border: 6px solid transparent;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   margin: 0 0 1rem 0;
   display: flex;
   justify-content: space-between;
@@ -11,6 +12,8 @@ export const Item = styled.li`
   cursor: pointer;
   &:hover {
     background-color: #fff;
+    border: 6px solid #00b3ff52;
+    border-radius: 10px;
     color: #000;
   }
 `;
